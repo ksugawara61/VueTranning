@@ -4,17 +4,23 @@
 
 <div id="fruits-counter">
     <div v-for="fruit in fruits">
-        {{ fruit.name }}: <counter-button v-on:increment="incrementCartStatus()"></counter-button>
+        <counter-button v-bind:fruit-name="fruit.name" v-on:increment="incrementCartStatus()"></counter-button>
     </div>
     <p>合計: {{ total }}</p>
 </div>
 
 <script>
 var counterButton = Vue.extend({
-    template: '<span>{{ counter }}個<button v-on:click="addToCart">追加</button></span>',
+    template: '<span>{{ fruitName }}{{ counter }}個<button v-on:click="addToCart">追加</button></span>',
     data: function () {
         return {
-            counter: 0
+            counter: 0,
+        }
+    },
+    props: {
+        fruitName: {
+            type: String,
+            required: true
         }
     },
     methods: {
