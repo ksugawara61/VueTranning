@@ -1,16 +1,29 @@
+var userData = [
+    {
+        id: 1,
+        name: 'Takuya Tejima',
+        description: '東南アジアで働くエンジニアです。'
+    },
+    {
+        id: 2,
+        name: 'Yohei Noda',
+        description: 'アウトドア・フットサルが趣味のエンジニアです。'
+    }
+]
+
 // JSONを返す関数
 var getUsers = function (callback) {
     setTimeout(function () {
-        callback (null, [
-            {
-                id: 1,
-                name: 'Takuya Tejima'
-            },
-            {
-                id: 2,
-                name: 'Yohei Noda'
-            }
-        ])
+        callback (null, userData)
+    }, 1000)
+}
+
+var getUser = function (userId, callback) {
+    setTimeout(function () {
+        var filteredUsers = userData.filter(function (user) {
+            return user.id === parseInt(userId, 10)
+        })
+        callback(null, filteredUsers && filteredUsers[0])
     }, 1000)
 }
 
@@ -48,28 +61,6 @@ var userList = {
             }).bind(this))
         }
     }
-}
-
-var userData = [
-    {
-        id: 1,
-        name: 'Takuya Tejima',
-        description: '東南アジアで働くエンジニアです。'
-    },
-    {
-        id: 2,
-        name: 'Yohei Noda',
-        description: 'アウトドア・フットサルが趣味のエンジニアです。'
-    }
-]
-
-var getUser = function (userId, callback) {
-    setTimeout(function () {
-        var filteredUsers = userData.filter(function (user) {
-            return user.id === parseInt(userId, 10)
-        })
-        callback(null, filteredUsers && filteredUsers[0])
-    }, 1000)
 }
 
 var userDetail = {
