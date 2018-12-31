@@ -13,6 +13,7 @@
         <script src="https://unpkg.com/vue@2.5.17"></script>
         <script src="https://unpkg.com/vue-router@3.0.1"></script>
 
+        <!-- Vueコンポーネント -->
         <script type="text/x-template" id="user-list">
             <div>
                 <div class="loading" v-if="loading">読み込み中...</div>
@@ -22,6 +23,19 @@
                 <!-- usersがロードされたら各ユーザーの名前を表示する -->
                 <div v-for="user in users" :key="user.id">
                     <h2>{{ user.name }}</h2>
+                </div>
+            </div>
+        </script>
+
+        <script type="text/x-template" id="user-detail">
+            <div>
+                <div class="loading" v-if="loading">読み込み中...</div>
+                <div v-if="error" class="error">
+                    {{ error }}
+                </div>
+                <div v-if="user">
+                    <h2>{{ user.name }}</h2>
+                    <p>{{ user.description }}</p>
                 </div>
             </div>
         </script>
