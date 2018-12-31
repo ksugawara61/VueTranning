@@ -3,10 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <title>Vue.js SPAのサンプルアプリケーション</title>
+        <style>
+            [v-cloak] {
+                display: none; /* テンプレートの{{}}を非表示にする */
+            }
+        </style>
     </head>
     <body>
         <div id="app">
-            <nav>
+            <nav v-cloak>
                 <router-link to="/top">トップページ</router-link>
                 <router-link to="/users">ユーザー一覧ページ</router-link>
                 <router-link to="/users/new?redirect=true">新規ユーザー登録</router-link>
