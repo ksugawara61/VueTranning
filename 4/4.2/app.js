@@ -1,3 +1,7 @@
+var userList = {
+    template: '#user-list'
+}
+
 // ルートオプションを渡してルーターインスタンスを生成します
 var router = new VueRouter({
     routes: [
@@ -9,9 +13,7 @@ var router = new VueRouter({
         },
         {
             path: '/users',
-            component: {
-                template: '<div>ユーザー一覧ページです。</div>'
-            }
+            component: userList
         }
     ]
 })
