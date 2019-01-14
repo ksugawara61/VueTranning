@@ -52,7 +52,7 @@ const store = new Vuex.Store({
             });
 
             // 次に追加するIDを更新
-            state.nextTaskId;
+            state.nextTaskId++;
         },
 
         // タスクの完了状態を変更
