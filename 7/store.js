@@ -94,8 +94,38 @@ const store = new Vuex.Store({
         // フィルタリング対象のラベルを変更
         changeFilter(state, { filter }) {
             state.filter = filter;
+        },
+
+        // ステートを復元
+        restore (state, { tasks, labels, nextTaskId, nextLabelId }) {
+            state.tasks = tasks;
+            state.labels = labels;
+            state.nextTaskId = nextTaskId;
+            state.nextLabelId = nextLabelId;
+        }
+    },
+
+    actions: {
+        // ローカルストレージにステートを保存
+        save ({ state }) {
+            const data = {
+                tasks: state.tasks,
+                labels: state.labels,
+                nextTaskId: state.nextTaskId,
+                nextLabelId: state.nextLabelId
+            };
+            localStorage.setItem('task-app-data', JSON.stringify(data));
+        },
+
+        // ローカルストレージからステートを復元
+        restore ({ commit }) {
+            const data = localStorage.getItem('task-app-data');
+            if (data) {
+                commit('restore', JSON.parse(data));
+            }
         }
     }
+
 });
 
 export default store
